@@ -63,7 +63,7 @@ const AgeDetails = ({ data }) => {
   return (
     <div>
       <div class="mt-4 mb-4 text-center">
-        <span class="text-xl font-bold mb-4">{data.name}</span> is{" "}
+        <span class="text-xl font-bold mb-4 capitalize">{data.name}</span> is{" "}
         <span class="text-xl font-bold mb-4">{myAge}</span> years old!
       </div>
       <div>
@@ -77,7 +77,7 @@ const AgeDetails = ({ data }) => {
 const App = () => {
   const [ageDetails, setAgeDetails] = useState(null);
 
-  // use the name submitted from InputForm to fetch a response from agify's API with axios
+  // PROMISE => use the name submitted from InputForm to fetch a response from agify's API with axios
   const handleSubmit = (name) => {
     // make the http request here
     axios
@@ -91,6 +91,23 @@ const App = () => {
         console.log(error);
       });
   };
+
+  /*
+  // ASYNC AWAIT PATTERN =>  => use the name submitted from InputForm to fetch a response from agify's API with axios
+  const handleSubmit = async (name) => {
+    try {
+
+      // make the http request here
+      let response = await axios.get("https://api.agify.io/?name=" + name);
+
+      // update the age data with the API response
+      setAgeDetails(response.data);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  */
 
   // render the component
   return (
